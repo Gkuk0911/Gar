@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHANTOM ESCROW | Безопасность сделок</title>
+    <style>
+        :root {
+            --accent: #d4af37; /* Матовое золото */
+            --bg: #0d0d0d;    /* Глубокий черный */
+            --surface: #1a1a1a;
+            --text: #ffffff;
+            --secondary: #8b7355; /* Приглушенное золото для текста */
+        }
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+        
+        header {
+            text-align: center;
+            border-bottom: 1px solid #222;
+            padding-bottom: 40px;
+            margin-bottom: 40px;
+        }
+        h1 { font-weight: 300; letter-spacing: 5px; text-transform: uppercase; color: var(--accent); margin: 0; }
+        .tagline { opacity: 0.5; font-size: 0.9rem; }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .card {
+            background: var(--surface);
+            padding: 25px;
+            border: 1px solid #222;
+            transition: 0.3s;
+        }
+        .card:hover { border-color: var(--accent); box-shadow: 0 0 20px rgba(0, 212, 255, 0.1); }
+        .card h3 { color: var(--accent); margin-top: 0; }
+
+        .calc-box {
+            background: linear-gradient(145deg, #111, #080808);
+            padding: 30px;
+            margin-top: 40px;
+            border: 1px solid var(--accent);
+            text-align: center;
+        }
+        input {
+            background: #000;
+            border: 1px solid #333;
+            color: var(--accent);
+            padding: 10px;
+            font-size: 1.2rem;
+            width: 200px;
+            text-align: center;
+        }
+        .fee { font-size: 1.5rem; color: #fff; margin-top: 10px; }
+
+       .contact-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #d4af37, #f2d472);
+            color: #000;
+            padding: 15px 45px;
+            text-decoration: none;
+            font-weight: 800;
+            margin-top: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 3px;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+        .status-dot { height: 10px; width: 10px; background-color: #00ff41; border-radius: 50%; display: inline-block; margin-right: 5px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>PHANTOM ESCROW</h1>
+        <p class="tagline">НЕЗАВИСИМЫЙ АРБИТРАЖ И ГАРАНТ-СЕРВИС</p>
+        <p><span class="status-dot"></span> OPERATOR ONLINE</p>
+    </header>
+
+    <div class="grid">
+        <div class="card">
+            <h3>Цифровые активы</h3>
+            <p>Продажа ТГ-каналов, доменов, скриптов и баз данных. Полная проверка тех. части перед передачей средств.</p>
+        </div>
+        <div class="card">
+            <h3>P2P Сделки</h3>
+            <p>Обмен валют и крипты между физлицами. Удержание средств до подтверждения обеими сторонами.</p>
+        </div>
+        <div class="card">
+            <h3>Серый рынок</h3>
+            <p>Анонимность и соблюдение интересов сторон в специфических нишах. Мы не задаем лишних вопросов.</p>
+        </div>
+    </div>
+
+    <div class="calc-box">
+        <h3>Рассчитать комиссию</h3>
+        <input type="number" id="amount" placeholder="Сумма сделки" oninput="calc()">
+        <div class="fee" id="result">Итого к выплате: 0</div>
+        <p style="font-size: 0.8rem; opacity: 0.5;">Стандартная комиссия: 5% (мин. 500 р.)</p>
+    </div>
+
+    <div style="text-align: center;">
+        <a href="https://t.me/Gluk_corporation" class="contact-btn">Инициировать сделку</a>
+    </div>
+</div>
+
+<script>
+    function calc() {
+        let amt = document.getElementById('amount').value;
+        let fee = amt * 0.05;
+        if (fee < 500 && amt > 0) fee = 500;
+        let final = amt - fee;
+        document.getElementById('result').innerText = amt > 0 ? "Вы получите: " + final.toLocaleString() + " ₽" : "Итого к выплате: 0";
+    }
+</script>
+
+</body>
+</html>
